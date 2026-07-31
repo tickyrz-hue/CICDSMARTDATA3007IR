@@ -87,7 +87,7 @@ jobs:
       run: |
         DEST_HOST=${{ secrets.DATABRICKS_DEST_HOST }}
         DEST_TOKEN=${{ secrets.DATABRICKS_DEST_TOKEN }}
-        CLUSTER_NAME="Cluster__SD"
+        CLUSTER_NAME="cluster__SD"
         
         echo "Buscando cluster existente: $CLUSTER_NAME"
         
@@ -128,7 +128,7 @@ jobs:
           "tasks": [
             {
               "task_key": "prepambiente",
-              "description": "Ejecuta notebook de preparacion de ambiente",
+              "description": "Ejecuta notebook prepambiente",
               "notebook_task": {
                 "notebook_path": "/smartdata/1.Preparacion_Ambiente",
                 "source": "WORKSPACE"
@@ -157,7 +157,7 @@ jobs:
               "task_key": "ingest_racing",
               "description": "Ejecuta notebook ingest_racing",
               "notebook_task": {
-                "notebook_path": "/smartdata/2.Ingest_racing_data"",
+                "notebook_path": "/smartdata/2.Ingest_racing_data",
                 "source": "WORKSPACE"
               },
               "existing_cluster_id": "$CLUSTER_ID",
@@ -170,8 +170,8 @@ jobs:
               ]
             },
             {
-              "task_key": "ingest_contructors",
-              "description": "Ejecuta notebook ingest_contructors",
+              "task_key": "ingest_constructors",
+              "description": "Ejecuta notebook ingest_constructors",
               "notebook_task": {
                 "notebook_path": "/smartdata/2.Ingest_Constructors",
                 "source": "WORKSPACE"
@@ -203,7 +203,7 @@ jobs:
                   "task_key": "ingest_racing"
                 },
                 {
-                  "task_key": "ingest_contructors"
+                  "task_key": "ingest_constructors"
                 }
               ]
             },
@@ -241,7 +241,7 @@ jobs:
             }
           ],
           "schedule": {
-            "quartz_cron_expression": "0 0 8 * * ?",
+            "quartz_cron_expression": "0 0 9 * * ?",
             "timezone_id": "America/Lima",
             "pause_status": "PAUSED"
           },
